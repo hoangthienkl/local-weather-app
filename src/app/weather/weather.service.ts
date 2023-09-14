@@ -1,6 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 import { ICurrentWeather } from '../interfaces';
@@ -18,7 +19,9 @@ export class WeatherService {
       .set('q', `${city},${country}`)
       .set('appid', environment.appId)
 
-    return this.httpClient.get<ICurrentWeatherData>(`${environment.baseUrl}api.openweathermap.org/data/2.5/weather`, { params: uriParams })
+    return this.httpClient
+      .get<ICurrentWeatherData>(`${environment.baseUrl}api.openweathermap.org/data/2.5/weather`, { params: uriParams })
+      .pipe(map(data => this.transformToICurrentWeather(data)))
   }
 
   private transformToICurrentWeather(data: ICurrentWeatherData): ICurrentWeather {
