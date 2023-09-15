@@ -7,10 +7,13 @@ import { environment } from 'src/environments/environment';
 import { ICurrentWeather } from '../interfaces';
 import { ICurrentWeatherData } from './icurrent-weather-data';
 
+export interface IWeatherService {
+  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather>
+}
 @Injectable({
   providedIn: 'root'
 })
-export class WeatherService {
+export class WeatherService implements IWeatherService {
 
   constructor(private httpClient: HttpClient) { }
 
