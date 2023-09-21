@@ -28,15 +28,20 @@
     "docker:taillogs": "echo Web Server Logs: && cross-conf-env docker logs -f $npm_package_config_imageName",
     "docker:open": "sleep 2 && cross-conf-env open-cli http://localhost:$npm_package_config_imagePort",
     "docker:debugmessage": "echo Docker Debug Completed Successfully! Hit Ctrl+C to terminate log tailing.",
-    "docker:debug": "run-s -cs docker:build docker:run docker:open docker:debugmessage docker:taillogs"
+    "docker:debug": "run-s -cs docker:build docker:run docker:open docker:debugmessage docker:taillogs",
+    "prenow:publish": "npm run build",
+    "now:publish": "now --platform-version 2 dist/local-weather-app"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.2.0",
+    "@angular/cdk": "^16.2.4",
     "@angular/common": "^16.2.0",
     "@angular/compiler": "^16.2.0",
     "@angular/core": "^16.2.0",
+    "@angular/flex-layout": "^15.0.0-beta.42",
     "@angular/forms": "^16.2.0",
+    "@angular/material": "^16.2.4",
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",

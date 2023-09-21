@@ -3,6 +3,7 @@ import { By } from '@angular/platform-browser';
 import { injectSpy } from 'angular-unit-test-helper'
 import { of } from 'rxjs';
 
+import { MaterialModule } from '../material.module';
 import { WeatherService } from '../weather/weather.service';
 import { WeatherServiceFake, fakeWeather } from '../weather/weather.service.fake';
 import { CurrentWeatherComponent } from './current-weather.component';
@@ -18,7 +19,8 @@ describe('CurrentWeatherComponent', () => {
 
       TestBed.configureTestingModule({
         declarations: [CurrentWeatherComponent],
-        providers: [{ provide: WeatherService, useValue: weatherServiceSpy }]
+        providers: [{ provide: WeatherService, useValue: weatherServiceSpy }],
+        imports: [MaterialModule]
       }).compileComponents();
       weatherServiceMock = injectSpy(WeatherService);
     }));

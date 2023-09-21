@@ -3,6 +3,7 @@ import { TestBed } from '@angular/core/testing'
 
 import { AppComponent } from './app.component'
 import { CurrentWeatherComponent } from './current-weather/current-weather.component'
+import { MaterialModule } from './material.module'
 import { WeatherService } from './weather/weather.service'
 import { WeatherServiceFake } from './weather/weather.service.fake'
 
@@ -10,7 +11,8 @@ describe('AppComponent', () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
       declarations: [AppComponent, CurrentWeatherComponent],
-      providers: [{ provide: WeatherService, useClass: WeatherServiceFake }]
+      providers: [{ provide: WeatherService, useClass: WeatherServiceFake }],
+      imports: [MaterialModule]
     })
   )
 
